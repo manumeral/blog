@@ -1,0 +1,5 @@
+*.pyc
+./The_Nomad/__pycache__
+./The_Nomad/db.sqlite3
+./The_Nomad/static
+./The_Nomad/.DS_Store
