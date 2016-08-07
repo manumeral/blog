@@ -1,0 +1,7 @@
+dev==0.4.0
+dj-database-url==0.4.1
+Django==1.9.9
+gunicorn==19.6.0
+pkg-resources==0.0.0
+psycopg2==2.6.2
+whitenoise==3.2
