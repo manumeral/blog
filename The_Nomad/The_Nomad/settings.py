@@ -25,7 +25,7 @@ SECRET_KEY = '18u47x6n1j2ly2yj^bw&-g&e6-*i)7k$54@-ae%d*^u3byd_2^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,16 +125,26 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 import dj_database_url
-DATABASES['default'] = dj_database_url.config()
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+#import dj_database_url
+#DATABASE_URL = 'postgresql:///postgresql'
 
-ALLOWED_HOSTS = ['*']
+#DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+#DATABASES['default'] = dj_database_url.config()
 
-DEBUG = False
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+#ALLOWED_HOSTS = ['*']
 
+#DEBUG = False
+
+#try:
+#    from .local_settings import *
+#except ImportError:
+#    pass
+
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
